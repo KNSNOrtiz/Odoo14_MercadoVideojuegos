@@ -1,0 +1,34 @@
+<odoo>
+    <record id="mercado.impuesto_report" model="ir.actions.report">
+        <field name="name">Informe de impuestos</field>
+        <field name="model">mercado.impuesto</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mercado.impuesto_report_view</field>
+        <field name="report_file">mercado.impuesto_report</field>
+        <field name="binding_model_id" ref="model_mercado_impuesto"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="impuesto_report_view">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <h1>Tabla de impuestos</h1><br />
+                <table  class="table table-bordered">
+                    <tr>
+                        <th>Tipo de impuesto</th>
+                        <th>Porcentaje a aplicar</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="impuesto">
+                            <tr>
+                                <td>
+                                    <span t-field="impuesto.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="impuesto.cantidad"/>
+                                </td>
+                            </tr>
+                    </t>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

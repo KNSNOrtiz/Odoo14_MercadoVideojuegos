@@ -1,0 +1,320 @@
+<odoo>
+  <data>
+    <!-- Vista de impuestos -->
+    <record model="ir.ui.view" id="mercado.impuesto_list_view">
+      <field name="name">mercado.impuesto.view.tree</field>
+      <field name="model">mercado.impuesto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="cantidad"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Search de impuestos -->
+    <record model="ir.ui.view" id="mercado.impuesto_search_view">
+      <field name="name">mercado.impuesto.view.search</field>
+      <field name="model">mercado.impuesto</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="cantidad"/>
+          <group>
+            <filter name="group_by_name" string="tipo" context="{'group_by':'name'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- Form de impuestos -->
+    <record model="ir.ui.view" id="mercado.impuesto_form_view">
+      <field name="name">mercado.impuesto.view.form</field>
+      <field name="model">mercado.impuesto</field>
+      <field name="arch" type="xml">
+        <form string="Tabla de impuestos">
+            <sheet>
+              <div class="oe_title">
+                  <table>
+                    <tr>
+                      <th>Tipo</th>
+                      <th><field name="name" placeholder="General, reducido..."/></th>         
+                    </tr>
+                    <tr>
+                      <th>Cantidad(%)</th>
+                      <th><field name="cantidad" placeholder="21"/></th>
+                    </tr>
+                  </table>
+              </div>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Menu Impuesto -->
+    <record model="ir.actions.act_window" id="mercado.impuesto_action_window">
+      <field name="name">Impuestos</field>
+      <field name="res_model">mercado.impuesto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Mercado" id="mercado.menu_root" web_icon="mercado,static/description/logo.png" sequence="1"/>
+    <menuitem name="Impuestos" id="mercado.menu_impuesto" parent="mercado.menu_root"/>
+    <menuitem name="Listado" id="mercado.menu_impuesto_list" parent="mercado.menu_impuesto"
+      action="mercado.impuesto_action_window"/>
+
+        <!-- Vista de videojuegos -->
+    <record model="ir.ui.view" id="mercado.videojuego_list_view">
+      <field name="name">mercado.videojuego.view.tree</field>
+      <field name="model">mercado.videojuego</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="genero"/>
+          <field name="plataforma"/>
+          <field name="lanzamiento"/>
+          <field name="tienda"/>
+          <field name="preciobase"/>
+          <field name="impuesto"/>
+          <field name="pvp"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Search de videojuegos -->
+    <record model="ir.ui.view" id="mercado.videojuego_search_view">
+      <field name="name">mercado.videojuego.view.search</field>
+      <field name="model">mercado.videojuego</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="genero"/>
+          <field name="plataforma"/>
+          <group>
+            <filter name="group_by_plataforma" string="plataforma" context="{'group_by':'plataforma'}"/>
+            <filter name="group_by_genero" string="genero" context="{'group_by':'genero'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- Form de videojuegos -->
+    <record model="ir.ui.view" id="mercado.videojuego_form_view">
+      <field name="name">mercado.videojuego.view.form</field>
+      <field name="model">mercado.videojuego</field>
+      <field name="arch" type="xml">
+        <form string="Tabla de videojuegos">
+            <sheet>
+              <div class="oe_title">
+                  <table>
+                    <tr>
+                      <th>Código</th>
+                      <th><field name="name" placeholder="C001"/></th>         
+                    </tr>
+                    <tr>
+                      <th>Nombre</th>
+                      <th><field name="nombre" placeholder="Nombre del videojuego"/></th>         
+                    </tr>
+                    <tr>
+                      <th>Género(s)</th>
+                      <th><field name="genero" placeholder="Plataformas, RPG, FPS..."/></th>
+                    </tr>
+                    <tr>
+                      <th>Plataforma(s)</th>
+                      <th><field name="plataforma" placeholder="PS5, Nintendo Switch, PC..."/></th>
+                    </tr>
+                    <tr>
+                      <th>Fecha de lanzamiento</th>
+                      <th><field name="lanzamiento" placeholder="dd/MM/yyyy"/></th>
+                    </tr>
+                    <tr>
+                      <th>Tiendas</th>
+                      <th><field name="tienda"/></th>
+                    </tr>
+                    <tr>
+                      <th>Precio base(€)</th>
+                      <th><field name="preciobase" placeholder="40,99"/></th>
+                    </tr>
+                    <tr>
+                      <th>Impuesto(%)</th>
+                      <th><field name="impuesto"/></th>
+                    </tr>
+                     <tr>
+                      <th>PVP(€)</th>
+                      <th><field name="pvp"/></th>
+                    </tr>
+                  </table>
+              </div>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Calendar Videojuego -->
+
+    <record model="ir.ui.view" id="mercado.videojuego_calendar_view">
+      <field name="name">mercado.videojuego.view.calendar</field>
+      <field name="model">mercado.videojuego</field>
+      <field name="arch" type="xml">
+        <calendar string="Fecha de lanzamiento" date_start="lanzamiento" color="nombre" mode="month">
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="plataforma"/>
+        </calendar>
+      </field>
+    </record>
+
+    <!-- Menu videojuego -->
+    <record model="ir.actions.act_window" id="mercado.videojuego_action_window">
+      <field name="name">Videojuegos</field>
+      <field name="res_model">mercado.videojuego</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <menuitem name="Videojuegos" id="mercado.menu_videojuego" parent="mercado.menu_root"/>
+    <menuitem name="Listado" id="mercado.menu_videojuego_list" parent="mercado.menu_videojuego"
+      action="mercado.videojuego_action_window"/>
+
+    <!-- Vista de tiendas -->
+    <record model="ir.ui.view" id="mercado.tienda_list_view">
+      <field name="name">mercado.tienda.view.tree</field>
+      <field name="model">mercado.tienda</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="localidad"/>
+          <field name="provincia"/>
+          <field name="productos"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Search de tiendas -->
+    <record model="ir.ui.view" id="mercado.tienda_search_view">
+      <field name="name">mercado.tienda.view.search</field>
+      <field name="model">mercado.tienda</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="nombre"/>
+          <field name="localidad"/>
+          <field name="provincia"/>
+          <field name="productos"/>
+          <group>
+            <filter name="group_by_localidad" string="localidad" context="{'group_by':'localidad'}"/>
+            <filter name="group_by_provincia" string="provincia" context="{'group_by':'provincia'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- Form de tiendas -->
+    <record model="ir.ui.view" id="mercado.tienda_form_view">
+      <field name="name">mercado.tienda.view.form</field>
+      <field name="model">mercado.tienda</field>
+      <field name="arch" type="xml">
+        <form string="Tiendas del mercado">
+            <sheet>
+              <div class="oe_title">
+                  <table>
+                    <tr>
+                      <th>CIF</th>
+                      <th><field name="name" placeholder="X01234"/></th>         
+                    </tr>
+                    <tr>
+                      <th>Nombre</th>
+                      <th><field name="nombre" placeholder="GAME"/></th>
+                    </tr>
+                    <tr>
+                      <th>Localidad</th>
+                      <th><field name="localidad" placeholder="Granada"/></th>
+                    </tr>
+                    <tr>
+                      <th>Provincia</th>
+                      <th><field name="provincia" placeholder="Granada"/></th>
+                    </tr>
+                    <tr>
+                      <th>Productos</th>
+                      <th><field name="productos"/></th>
+                    </tr>
+                  </table>
+              </div>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Menu tienda -->
+    <record model="ir.actions.act_window" id="mercado.tienda_action_window">
+      <field name="name">Tiendas</field>
+      <field name="res_model">mercado.tienda</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Tiendas" id="mercado.menu_tienda" parent="mercado.menu_root"/>
+    <menuitem name="Listado" id="mercado.menu_tienda_list" parent="mercado.menu_tienda"
+      action="mercado.tienda_action_window"/>
+
+
+
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="mercado.list">
+      <field name="name">Mercado list</field>
+      <field name="model">mercado.mercado</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="mercado.action_window">
+      <field name="name">Mercado window</field>
+      <field name="res_model">mercado.mercado</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="mercado.action_server">
+      <field name="name">Mercado server</field>
+      <field name="model_id" ref="model_mercado_mercado"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="Mercado" id="mercado.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="mercado.menu_1" parent="mercado.menu_root"/>
+    <menuitem name="Menu 2" id="mercado.menu_2" parent="mercado.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="mercado.menu_1_list" parent="mercado.menu_1"
+              action="mercado.action_window"/>
+    <menuitem name="Server to list" id="mercado" parent="mercado.menu_2"
+              action="mercado.action_server"/>
+-->
+  </data>
+</odoo>

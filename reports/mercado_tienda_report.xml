@@ -1,0 +1,31 @@
+<odoo>
+    <record id="mercado.tienda_report" model="ir.actions.report">
+        <field name="name"> Informe de tiendas</field>
+        <field name="model">mercado.tienda</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mercado.tienda_report_view</field>
+        <field name="report_file">mercado.tienda_report</field>
+        <field name="binding_model_id" ref="model_mercado_tienda"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="tienda_report_view">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <h1>Tiendas ofertantes</h1><br />
+                <t t-foreach="docs" t-as="tienda">
+                    <ul>
+                        <li>CIF: <span t-field="tienda.name" /></li>
+                        <li>Nombre: <span t-field="tienda.nombre" /></li>
+                        <li>Ubicación</li>
+                        <ul>       
+                         <li>Localidad: <span t-field="tienda.localidad"/></li>
+                         <li>Provincia: <span t-field="tienda.provincia"/></li>                  
+                        </ul>
+                        <li>Productos (Cód.): <span t-field="tienda.productos"/></li>
+                    </ul>
+                    <hr/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

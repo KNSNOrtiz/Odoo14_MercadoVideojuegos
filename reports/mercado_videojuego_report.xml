@@ -1,0 +1,32 @@
+<odoo>
+    <record id="mercado.videojuego_report" model="ir.actions.report">
+        <field name="name"> Informe de videojuegos</field>
+        <field name="model">mercado.videojuego</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mercado.videojuego_report_view</field>
+        <field name="report_file">mercado.videojuego_report</field>
+        <field name="binding_model_id" ref="model_mercado_videojuego"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="videojuego_report_view">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <h1>Videojuegos disponibles</h1><br />
+                <t t-foreach="docs" t-as="videojuego">
+                    <ul>
+                        <li>Código: <span t-field="videojuego.name" /></li>
+                        <li>Nombre: <span t-field="videojuego.nombre" /></li>
+                        <li>Género(s): <span t-field="videojuego.genero" /></li>
+                        <li>Plataforma(s): <span t-field="videojuego.plataforma" /></li>
+                        <li>Fecha de lanzamiento: <span t-field="videojuego.lanzamiento" /></li>
+                        <li>Tiendas (CIF): <span t-field="videojuego.tienda"/></li>
+                        <li>Precio base (€): <span t-field="videojuego.preciobase" /></li>
+                        <li>Impuesto aplicado: <span t-field="videojuego.impuesto" /></li>
+                        <li>Pvp (€): <span t-field="videojuego.pvp" /></li>
+                    </ul>
+                    <hr/>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

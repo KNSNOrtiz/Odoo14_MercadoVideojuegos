@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mercado_videojuego_usuario,mercado.videojuego.usuario,model_mercado_videojuego,mercado.group_mercado_usuario,1,0,0,0
+access_mercado_videojuego_gerente,mercado.videojuego.gerente,model_mercado_videojuego,mercado.group_mercado_gerente,1,1,1,1
+access_mercado_videojuego_jefe,mercado.videojuego.jefe,model_mercado_videojuego,mercado.group_mercado_jefe,1,1,1,1
+access_mercado_tienda_usuario,mercado.tienda.usuario,model_mercado_tienda,mercado.group_mercado_usuario,1,0,0,0
+access_mercado_tienda_gerente,mercado.tienda.gerente,model_mercado_tienda,mercado.group_mercado_gerente,1,1,1,1
+access_mercado_tienda_jefe,mercado.tienda.jefe,model_mercado_tienda,mercado.group_mercado_jefe,1,1,1,1
+access_mercado_impuesto_usuario,mercado.impuesto.usuario,model_mercado_impuesto,mercado.group_mercado_usuario,1,0,0,0
+access_mercado_impuesto_gerente,mercado.impuesto.gerente,model_mercado_impuesto,mercado.group_mercado_gerente,1,0,0,0
+access_mercado_impuesto_jefe,mercado.impuesto.jefe,model_mercado_impuesto,mercado.group_mercado_jefe,1,1,1,1

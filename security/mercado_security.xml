@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <odoo>
+        <data>
+            <!-- Categoría de seguridad para Mercado-->
+            <record model="ir.module.category" id="mercado.module_category_mercado">
+                <field name="name">Mercado</field>
+                <field name="description">Gestiona tiendas, mercados e impuestos.</field>
+                <field name="sequence">100</field>
+            </record>
+
+            <!-- Grupo USUARIOS -->
+            <record model="res.groups" id="group_mercado_usuario">
+                <field name="name">Usuario</field>
+                <field name="category_id" ref="mercado.module_category_mercado"></field>
+                <field name="comment">Los usuarios solo pueden leer</field>
+            </record>
+            <!-- Grupo GERENTES-->
+            <record model="res.groups" id="group_mercado_gerente">
+                <field name="name">Gerente</field>
+                <field name="category_id" ref="mercado.module_category_mercado"></field>
+                <field name="comment">Los gerentes pueden leer y escribir sobre tienda y juegos.</field>
+                <!-- También pertenecen al grupo usuario-->
+                <field name="implied_ids" eval="[(4, ref('group_mercado_usuario'))]"/>
+            </record>
+            <!-- Grupo JEFES -->
+            <record model="res.groups" id="group_mercado_jefe">
+                <field name="name">Jefe</field>
+                <field name="category_id" ref="mercado.module_category_mercado"></field>
+                <field name="comment">Los jefes pueden hacer cualquier operación en cualquier tabla.</field>
+                <!-- Los jefes forman también parte de los dos grupos anteriores. -->
+                <field name="implied_ids" eval="[(4, ref('group_mercado_usuario')), (4, ref('group_mercado_gerente'))]"/>
+                 <!--Añadimos a los usuarios administradores de odoo -->
+                <field name="users" eval="[(4, ref('base.user_root')),(4,ref('base.user_admin'))]"/>
+            </record>
+        </data>
+    </odoo>

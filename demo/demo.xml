@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+          <record id="im01" model="mercado.impuesto">
+            <field name="name">General</field>
+            <field name="cantidad">21</field>
+          </record>
+
+          <record id="im02" model="mercado.impuesto">
+            <field name="name">Reducido</field>
+            <field name="cantidad">10</field>
+          </record>
+
+          <record id="im03" model="mercado.impuesto">
+            <field name="name">Superreducido</field>
+            <field name="cantidad">4</field>
+          </record>
+    </data> 
+</odoo>
